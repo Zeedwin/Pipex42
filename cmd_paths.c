@@ -6,7 +6,7 @@
 /*   By: jgirard- <jgirard-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 20:42:11 by jgirard-          #+#    #+#             */
-/*   Updated: 2022/07/24 00:08:52 by jgirard-         ###   ########.fr       */
+/*   Updated: 2022/07/26 00:06:08 by jgirard-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,21 @@ char	**get_path(char **envp)
 	return (path);
 }
 
-char	**get_cmd_path(char **cmd, char **envp) //change static int return CMD Not Found
+static int	get_cmd_path(char **cmd, char **envp) //change static int return CMD Not Found
 {
 	char	**path;
 	char	*tmp;
 	int		i;
 
 	if (!path)
-		return (NULL);
-	return (path);
+		return (0);
+	i = 0;
+	while (path[i])
+	{
+		tmp = ft_strjoin(path)
+	}
+	
+	return (COMMAND_NOT_FOUND);
 }
 
 static void	joinslash(char **envp)
