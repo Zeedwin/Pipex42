@@ -6,7 +6,7 @@
 /*   By: jgirard- <jgirard-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 23:19:05 by jgirard-          #+#    #+#             */
-/*   Updated: 2022/07/28 20:33:20 by jgirard-         ###   ########.fr       */
+/*   Updated: 2022/07/28 23:06:45 by jgirard-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@ void	pipexu(int inputf, int outputf, char **arg, char **env)
 	pid_t child2;
 	int	end[2];
 	int status;
-
+	
+	printf("forking");
 	pipe(end);
 	child1 = fork();
-	if(child1 == -1)
+	if(child1 < 0)
 		return(perror("fork"));
 	if (!child1)
 		cmd1(inputf, find_cmd(arg[2], env), end);		
 	child2 = fork();
-	if(child2 == -1)
+	if(child2 < 0)
 		return(perror("fork"));
 	if (!child2)
 		cmd2(outputf, find_cmd(arg[3], env), end);
@@ -38,8 +39,8 @@ void	pipexu(int inputf, int outputf, char **arg, char **env)
 
 int	cmd1(int infile, char **cmd1, int *fd)
 {
-	int	res;
-	
+	int		res;
+
 	dup2(infile, STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO);
 	close(fd[0]);
@@ -54,8 +55,8 @@ int	cmd2(int outfile, char **cmd2, int *fd)
 {
 	int	res;
 	
-	dup2(outfile, STDIN_FILENO);
-	dup2(fd[0], STDOUT_FILENO);
+	dup2(outfile, STDOUT_FILENO);
+	dup2(fd[0], STDIN_FILENO);
 	close(fd[1]);
 	close(outfile);
 	res = execve(cmd2[0], cmd2, NULL);
