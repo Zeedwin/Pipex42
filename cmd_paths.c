@@ -6,11 +6,24 @@
 /*   By: jgirard- <jgirard-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 20:42:11 by jgirard-          #+#    #+#             */
-/*   Updated: 2022/07/30 09:34:53 by jgirard-         ###   ########.fr       */
+/*   Updated: 2022/07/30 10:51:45 by jgirard-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+static void	joinslash(char **envp)
+{
+	int	i;
+
+	i = 0;
+	while (envp[i])
+	{
+		if (envp[i][ft_strlen(envp[i]) - 1] != '/')
+			envp[i] = ft_strjoin(envp[i], "/");
+		i++;
+	}
+}
 
 char	**get_path(char **envp)
 {
@@ -59,19 +72,6 @@ static int	get_cmd_path(char  **cmd, char **envp)
 		i++;
 	}
 	return (COMMAND_NOT_FOUND);
-}
-
-static void	joinslash(char **envp)
-{
-	int	i;
-
-	i = 0;
-	while (envp[i])
-	{
-		if (envp[i][ft_strlen(envp[i]) - 1] != '/')
-			envp[i] = ft_strjoin(envp[i], "/");
-		i++;
-	}
 }
 
 char	**find_cmd(char const	*arg_cmd,	char	**envp)
