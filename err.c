@@ -6,7 +6,7 @@
 /*   By: jgirard- <jgirard-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 07:13:16 by jgirard-          #+#    #+#             */
-/*   Updated: 2022/07/30 09:35:00 by jgirard-         ###   ########.fr       */
+/*   Updated: 2022/07/30 12:07:25 by jgirard-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,5 @@ int	bad_infile(char	*file)
 	ft_putstr_fd((char *)file, 2);
 	return (EXIT_FAILURE);
 }
+
+//
