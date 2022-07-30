@@ -6,7 +6,7 @@
 /*   By: jgirard- <jgirard-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 23:19:10 by jgirard-          #+#    #+#             */
-/*   Updated: 2022/07/30 12:08:11 by jgirard-         ###   ########.fr       */
+/*   Updated: 2022/07/30 12:12:15 by jgirard-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,3 @@ int		cmd2(int outfile, char **cmd2, int *fd);
 # define COMMAND_NOT_FOUND 127
 
 #endif
- 

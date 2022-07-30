@@ -6,7 +6,7 @@
 /*   By: jgirard- <jgirard-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 07:27:02 by jgirard-          #+#    #+#             */
-/*   Updated: 2022/07/30 12:08:26 by jgirard-         ###   ########.fr       */
+/*   Updated: 2022/07/30 12:12:20 by jgirard-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,3 @@ char	**ft_split(char const *s, char c)
 	return (splited);
 }
 
-//
