@@ -6,7 +6,7 @@
 /*   By: jgirard- <jgirard-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 23:19:05 by jgirard-          #+#    #+#             */
-/*   Updated: 2022/07/28 23:06:45 by jgirard-         ###   ########.fr       */
+/*   Updated: 2022/07/30 08:52:45 by jgirard-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	pipexu(int inputf, int outputf, char **arg, char **env)
 	int	end[2];
 	int status;
 	
-	printf("forking");
 	pipe(end);
 	child1 = fork();
 	if(child1 < 0)

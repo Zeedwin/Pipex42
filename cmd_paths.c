@@ -6,7 +6,7 @@
 /*   By: jgirard- <jgirard-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 20:42:11 by jgirard-          #+#    #+#             */
-/*   Updated: 2022/07/28 20:50:46 by jgirard-         ###   ########.fr       */
+/*   Updated: 2022/07/30 09:34:53 by jgirard-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	**get_path(char **envp)
 	return (path);
 }
 
-int	get_cmd_path(char **cmd, char **envp) //change static int return CMD Not Found
+static int	get_cmd_path(char  **cmd, char **envp)
 {
 	char	**path;
 	char	*tmp;
@@ -48,7 +48,7 @@ int	get_cmd_path(char **cmd, char **envp) //change static int return CMD Not Fou
 	i = 0;
 	while (path[i])
 	{
-		tmp = ft_strjoin(*path, *cmd);
+		tmp = ft_strjoin(path[i], *cmd);
 		if(file_input_check(tmp))
 		{
 			free(*cmd);
@@ -58,7 +58,7 @@ int	get_cmd_path(char **cmd, char **envp) //change static int return CMD Not Fou
 		free(tmp);
 		i++;
 	}
-		return (COMMAND_NOT_FOUND);
+	return (COMMAND_NOT_FOUND);
 }
 
 static void	joinslash(char **envp)
@@ -68,22 +68,22 @@ static void	joinslash(char **envp)
 	i = 0;
 	while (envp[i])
 	{
-		if (!gnl_ft_strchr(*envp, '/'))
+		if (envp[i][ft_strlen(envp[i]) - 1] != '/')
 			envp[i] = ft_strjoin(envp[i], "/");
 		i++;
 	}
 }
 
-int	err_pipex(void)
+char	**find_cmd(char const	*arg_cmd,	char	**envp)
 {
-	ft_putstr_fd("Use:\n./pipex file1 cmd1 cmd2 file2\n",2);
-	return(EXIT_FAILURE);
-}
+	char	**cmd;
 
-int	bad_infile(char	*file)
-{
-	ft_putstr_fd("no file / directory found: ", 2);
-	ft_putstr_fd((char *)file, 2);
-	return (EXIT_FAILURE);
+	cmd	= ft_split(arg_cmd, ' ');
+	if (cmd == NULL)
+		return (NULL);
+	if (get_cmd_path(cmd, envp) == 0)
+	{
+		return(NULL);
+	}
+	return (cmd);
 }
-	
